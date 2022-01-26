@@ -5,6 +5,6 @@ const app = init_bot();
 
 // listen for messages
 
-app.command('/bot', () => {
+app.command('/bothello', () => {
     console.log("Slack command noticed")
 });
