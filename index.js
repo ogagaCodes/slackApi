@@ -13,4 +13,4 @@ mongoose
       console.log(`Server has started!... and running on port ${PORT}`);
     });
   })
-  .catch((error) => console.log(error));
+  .catch((error) => console.error(error));
