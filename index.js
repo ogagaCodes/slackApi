@@ -4,7 +4,7 @@ const { KEYS } = require("./src/constants/keys");
 const PORT = process.env.PORT || 80;
 
 mongoose
-  .connect(process.env.DBURI, {
+  .connect(KEYS.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
