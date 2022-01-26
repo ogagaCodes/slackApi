@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-require('dotenv').config();
+require("dotenv").config();
 const routes = require("./modules");
 const createError = require("./helpers/createError");
+const { createResponse } = require("./helpers/createResponse");
 const { RESPONSE } = require("./constants/response");
 const { HTTP } = require("./constants/http");
 const app = express();
@@ -15,8 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(function (_err, _req, _res, _) {
-
-
   if (_err instanceof SyntaxError) {
     return _res.status(HTTP.SERVER_ERROR).json({
       code: HTTP.BAD_REQUEST,
@@ -31,6 +30,9 @@ const apiRouter = express.Router();
 
 // expose routes here
 apiRouter.use(routes());
+apiRouter.use("/", (req, res, next) => {
+  return createResponse("You are here slack bot!!!!", {})(res, 200);
+});
 
 // handler for route-not-found
 apiRouter.use((_req, _res, next) => {
@@ -46,34 +48,31 @@ apiRouter.use((_req, _res, next) => {
   );
 });
 
-
 // error handler for api router
 apiRouter.use((error, _req, res, _next) => {
-    console.log(error);
-    const initialError = error;
-    if (!error.statusCode) {
-      error = createError(HTTP.SERVER_ERROR, [
-        {
-          code: HTTP.SERVER_ERROR,
-          status: RESPONSE.ERROR,
-          message: initialError.message || "Internal Server Error.",
-          data: error.data,
-          stack: error.stack,
-        },
-      ]);
-    }
-  
-    return res.status(error.statusCode).json({
-      code: error.code,
-      status: error.status,
-      message: error.message,
-      data: error.data || null,
-      ...(process.env.NODE_ENV === "development" && { stack: error.stack }),
-    });
-  
+  console.log(error);
+  const initialError = error;
+  if (!error.statusCode) {
+    error = createError(HTTP.SERVER_ERROR, [
+      {
+        code: HTTP.SERVER_ERROR,
+        status: RESPONSE.ERROR,
+        message: initialError.message || "Internal Server Error.",
+        data: error.data,
+        stack: error.stack,
+      },
+    ]);
+  }
+
+  return res.status(error.statusCode).json({
+    code: error.code,
+    status: error.status,
+    message: error.message,
+    data: error.data || null,
+    ...(process.env.NODE_ENV === "development" && { stack: error.stack }),
   });
+});
 
-app.use('/', apiRouter);
-
+app.use("/", apiRouter);
 
 module.exports = app;

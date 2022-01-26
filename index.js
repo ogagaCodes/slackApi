@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const app = require("./src/server");
 const { KEYS } = require("./src/constants/keys");
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 80;
 
 mongoose
   .connect(process.env.DBURI, {
