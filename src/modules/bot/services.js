@@ -3,7 +3,7 @@ const Responses = require("../api/model");
 exports.startBot = async (bodyData) => {
   try {
     const input = bodyData.text;
-    console.log("USER_INPUT: ", input);
+    console.log("USER_INPUT: ", bodyData);
     let data = {
       response_type: "in_channel", // public to the channel
       text: "Welcome. How are you doing?",
