@@ -9,29 +9,28 @@ exports.startBot = async (bodyData) => {
       text: "Welcome. How are you doing?",
       attachments: [
         {
-          text: "Choose a game to play",
           fallback:
-            "If you could read this message, you'd be choosing something fun to do right now.",
+            "Say your mood",
           color: "#3AA3E3",
           attachment_type: "default",
-          callback_id: "game_selection",
+          callback_id: "mood_selection",
           actions: [
             {
-              name: "games_list",
-              text: "Pick a game...",
+              name: "mood_list",
+            //   text: "Pick a game...",
               type: "select",
               options: [
                 {
-                  text: "Hearts",
-                  value: "hearts",
+                  text: "Doing Wel",
+                  value: "well",
                 },
                 {
-                  text: "Bridge",
-                  value: "bridge",
+                  text: "Neutral",
+                  value: "neutral",
                 },
                 {
-                  text: "Checkers",
-                  value: "checkers",
+                  text: "Feelng Lucky",
+                  value: "lucky",
                 },
               ],
             },
