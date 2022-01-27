@@ -10,7 +10,7 @@ const botRoutes = require("./bot/routes");
 
 module.exports = () => {
   const router = Router();
-
+  router.use("/", botRoutes);
   router.use("/api", apiRoutes);
 
   return router;
