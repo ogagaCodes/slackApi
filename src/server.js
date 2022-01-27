@@ -35,18 +35,18 @@ apiRouter.use(routes());
 // });
 
 // handler for route-not-found
-apiRouter.use((_req, _res, next) => {
-  next(
-    createError(HTTP.NOT_FOUND, [
-      {
-        code: HTTP.NOT_FOUND,
-        status: RESPONSE.ERROR,
-        message: "Route not found.",
-        data: null,
-      },
-    ])
-  );
-});
+// apiRouter.use((_req, _res, next) => {
+//   next(
+//     createError(HTTP.NOT_FOUND, [
+//       {
+//         code: HTTP.NOT_FOUND,
+//         status: RESPONSE.ERROR,
+//         message: "Route not found.",
+//         data: null,
+//       },
+//     ])
+//   );
+// });
 
 // error handler for api router
 apiRouter.use((error, _req, res, _next) => {
