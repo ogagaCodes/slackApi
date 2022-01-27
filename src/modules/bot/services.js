@@ -21,7 +21,7 @@ exports.startBot = async (bodyData) => {
               type: "select",
               options: [
                 {
-                  text: "Doing Wel",
+                  text: "Doing Well",
                   value: "well",
                 },
                 {
