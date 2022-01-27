@@ -22,7 +22,7 @@ exports.botController = async (req, res, next) => {
         ])
       );
     }
-    return createResponse(message, data)(res, 200);
+    return res.json(data);
   } catch (err) {
     console.error(err);
 
