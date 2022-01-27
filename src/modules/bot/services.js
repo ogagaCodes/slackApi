@@ -13,6 +13,7 @@ exports.startBot = async (data) => {
     };
     return {
       error: false,
+      message: "Success",
       datum,
     };
   } catch (err) {
