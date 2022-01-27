@@ -7,10 +7,6 @@ const { createResponse } = require("./helpers/createResponse");
 const { RESPONSE } = require("./constants/response");
 const { HTTP } = require("./constants/http");
 const app = express();
-const { init_bot } = require("../src/modules/bot/_init_bot");
-
-
-const bot_app = init_bot();
 
 app.disable("x-powered-by");
 
@@ -35,13 +31,7 @@ const apiRouter = express.Router();
 // expose routes here
 apiRouter.use(routes());
 apiRouter.use("/", (req, res, next) => {
-
-// listen for messages
-
-bot_app.command('/bot', async (_, say) => {
-  await say("Welcome. How are you doing");
-});
-  // return createResponse("You are here slack bot!!!!", {})(res, 200);
+  return createResponse("You are here slack bot!!!!", {})(res, 200);
 });
 
 // handler for route-not-found
