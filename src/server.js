@@ -30,9 +30,9 @@ const apiRouter = express.Router();
 
 // expose routes here
 apiRouter.use(routes());
-apiRouter.use("/", (req, res, next) => {
-  return createResponse("You are here slack bot!!!!", {})(res, 200);
-});
+// apiRouter.use("/", (req, res, next) => {
+//   return createResponse("You are here slack bot!!!!", {})(res, 200);
+// });
 
 // handler for route-not-found
 apiRouter.use((_req, _res, next) => {
