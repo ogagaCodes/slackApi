@@ -1,10 +1,10 @@
 const Responses = require("../api/model");
 
-exports.startBot = async (data) => {
+exports.startBot = async (bodyData) => {
   try {
-   const input = data.text;
+   const input = bodyData.text;
    console.log("USER_INPUT: ", input);
-    let datum = { 
+    let data = { 
         response_type: 'in_channel', // public to the channel 
         text: 'Welcome. How are you doing?', 
         // attachments:[ { 
@@ -14,7 +14,7 @@ exports.startBot = async (data) => {
     return {
       error: false,
       message: "Success",
-      datum,
+      data,
     };
   } catch (err) {
     console.log(err?.response?.data || err);

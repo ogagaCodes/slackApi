@@ -6,7 +6,7 @@ const service = require("./services");
 
 exports.botController = async (req, res, next) => {
   try {
-    const { error, message, datum } = await service.startBot(
+    const { error, message, data } = await service.startBot(
       req.body
     );
     if (error) {
