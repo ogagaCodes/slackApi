@@ -4,7 +4,7 @@ const controller = require("./controller");
 const router = Router();
 
 router.post(
-  "/start-bot",
+  "/",
   controller.botController
 );
 
