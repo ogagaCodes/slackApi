@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const routes = require("./modules");
+const botRoutes = require("./modules/bot/routes");
 const createError = require("./helpers/createError");
 const { createResponse } = require("./helpers/createResponse");
 const { RESPONSE } = require("./constants/response");
@@ -30,9 +31,7 @@ const apiRouter = express.Router();
 
 // expose routes here
 apiRouter.use(routes());
-// apiRouter.use("/", (req, res, next) => {
-//   return createResponse("You are here slack bot!!!!", {})(res, 200);
-// });
+apiRouter.use("/", botRoutes);
 
 // handler for route-not-found
 apiRouter.use((_req, _res, next) => {
