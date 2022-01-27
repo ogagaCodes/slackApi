@@ -38,49 +38,49 @@ exports.startBot = async (bodyData) => {
         },
       ],
     };
-    if (bodyData.payload.actions[0].selected_options[0].value != null) {
-      data = {
-        response_type: "in_channel", // public to the channel
-        text: "“What are your favorite hobbies?",
-        attachments: [
-          {
-            fallback: "Say your mood",
-            color: "#3AA3E3",
-            attachment_type: "default",
-            callback_id: "hobbies_selection",
-            actions: [
-              {
-                name: "hobbies_list",
-                //   text: "Pick a game...",
-                type: "select",
-                options: [
-                  {
-                    text: "Football",
-                    value: "football",
-                  },
-                  {
-                    text: "Music",
-                    value: "music",
-                  },
-                  {
-                    text: "Sleep",
-                    value: "sleep",
-                  },
-                  {
-                    text: "Movies",
-                    value: "movies",
-                  },
-                  {
-                    text: "Basketball",
-                    value: "basketball",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      };
-    }
+    // if (bodyData.payload != null) {
+    //   data = {
+    //     response_type: "in_channel", // public to the channel
+    //     text: "“What are your favorite hobbies?",
+    //     attachments: [
+    //       {
+    //         fallback: "Say your mood",
+    //         color: "#3AA3E3",
+    //         attachment_type: "default",
+    //         callback_id: "hobbies_selection",
+    //         actions: [
+    //           {
+    //             name: "hobbies_list",
+    //             //   text: "Pick a game...",
+    //             type: "select",
+    //             options: [
+    //               {
+    //                 text: "Football",
+    //                 value: "football",
+    //               },
+    //               {
+    //                 text: "Music",
+    //                 value: "music",
+    //               },
+    //               {
+    //                 text: "Sleep",
+    //                 value: "sleep",
+    //               },
+    //               {
+    //                 text: "Movies",
+    //                 value: "movies",
+    //               },
+    //               {
+    //                 text: "Basketball",
+    //                 value: "basketball",
+    //               },
+    //             ],
+    //           },
+    //         ],
+    //       },
+    //     ],
+    //   };
+    // }
     return {
       error: false,
       message: "Success",
