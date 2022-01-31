@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const controller = require("./controller");
+const { listenForEvents } = require("../bot/events/message.listener")
 
 const router = Router();
 
@@ -9,8 +10,8 @@ router.post(
 );
 
 router.post(
-  "/events",
-  controller.messageController
+  "/events", 
+  listenForEvents
 );
 
 module.exports = router;

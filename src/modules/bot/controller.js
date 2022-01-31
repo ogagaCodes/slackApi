@@ -31,29 +31,3 @@ exports.botController = async (req, res, next) => {
     return next(createError.InternalServerError(err));
   }
 };
-
-exports.messageController = async (req, res, next) => {
-  try {
-    const { error, message, data } = await listenForEvents(
-      app
-    );
-    if (error) {
-      return next(
-        createError(HTTP.BAD_REQUEST, [
-          {
-            status: RESPONSE.ERROR,
-            message,
-            statusCode: 400,
-            data: data,
-            code: HTTP.BAD_REQUEST,
-          },
-        ])
-      );
-    }
-    return res.json(data);
-  } catch (err) {
-    console.error(err);
-
-    return next(createError.InternalServerError(err));
-  }
-};
