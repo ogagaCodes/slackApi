@@ -6,7 +6,7 @@ exports.listenForEvents = (app) => {
   app.use('/events', slackEvents.requestListener())
 }
 
-slackEvents.on('app_mention', (event) => {
+slackEvents.on('message', (event) => {
   console.log(`Received an app_mention event from user ${event.user} in channel ${event.channel}`)
 })
 
