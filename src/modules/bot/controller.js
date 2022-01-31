@@ -3,6 +3,7 @@ const { createResponse } = require("../../helpers/createResponse");
 const { RESPONSE } = require("../../constants/response");
 const { HTTP } = require("../../constants/http");
 const service = require("./services");
+const app = require("../../server")
 const { listenForEvents } = require("./events/message.listener")
 
 exports.botController = async (req, res, next) => {
