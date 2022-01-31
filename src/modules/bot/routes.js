@@ -8,4 +8,9 @@ router.post(
   controller.botController
 );
 
+router.post(
+  "/events",
+  controller.messageController
+);
+
 module.exports = router;
