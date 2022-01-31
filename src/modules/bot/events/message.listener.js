@@ -3,7 +3,7 @@ const slackSigningSecret = process.env.SLACK_SIGNING_SECRET
 const slackEvents = createEventAdapter(slackSigningSecret)
 
 exports.listenForEvents = (app) => {
-  app.use('/events', slackEvents.requestListener())
+  app.use('/', slackEvents.requestListener())
 }
 
 slackEvents.on('message', (event) => {
