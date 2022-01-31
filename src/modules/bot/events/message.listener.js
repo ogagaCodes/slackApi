@@ -1,10 +1,16 @@
-// const { init_bot } = require("../_init_bot");
+const { createEventAdapter } = require('@slack/events-api')
+const slackSigningSecret = process.env.SLACK_SIGNING_SECRET
+const slackEvents = createEventAdapter(slackSigningSecret)
 
+exports.listenForEvents = (app) => {
+  app.use('/events', slackEvents.requestListener())
+}
 
-// const app = init_bot();
+slackEvents.on('app_mention', (event) => {
+  console.log(`Received an app_mention event from user ${event.user} in channel ${event.channel}`)
+})
 
-// // listen for messages
-
-// app.command('/bot', (_, say) => {
-//   await say("Welcome. How are you doing");
-// });
+// All errors in listeners are caught here. If this weren't caught, the program would terminate.
+slackEvents.on('error', (error) => {
+  console.log(`error: ${error}`)
+})

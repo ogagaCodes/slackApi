@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const app = require("./src/server");
+const events = require('./src/modules/bot/events/message.listener')
+events.listenForEvents(app)
 const { KEYS } = require("./src/constants/keys");
 const PORT = process.env.PORT || 80;
 
