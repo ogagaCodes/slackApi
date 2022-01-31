@@ -8,8 +8,8 @@ const { listenForEvents } = require("./events/message.listener")
 
 exports.botController = async (req, res, next) => {
   try {
-    const { error, message, data } = await listenForEvents(
-      app
+    const { error, message, data } = await service.startBot(
+      req.body
     );
     if (error) {
       return next(
@@ -34,8 +34,8 @@ exports.botController = async (req, res, next) => {
 
 exports.messageController = async (req, res, next) => {
   try {
-    const { error, message, data } = await service.startBot(
-      req.body
+    const { error, message, data } = await listenForEvents(
+      app
     );
     if (error) {
       return next(
