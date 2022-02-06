@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const routes = require("./modules");
-const botRoutes = require("./modules/bot/routes");
+// const botRoutes = require("./modules/bot/routes");
 const createError = require("./helpers/createError");
 const { createResponse } = require("./helpers/createResponse");
 const { RESPONSE } = require("./constants/response");
@@ -31,7 +31,11 @@ const apiRouter = express.Router();
 
 // expose routes here
 apiRouter.use(routes());
-apiRouter.use("/", botRoutes);
+apiRouter.use("/", async (req, res, next) => {
+  const data = {};
+  const message = "Welcome to Bot Api";
+  return createResponse(message, data)(res, 200);
+});
 
 // handler for route-not-found
 apiRouter.use((_req, _res, next) => {

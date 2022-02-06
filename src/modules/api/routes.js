@@ -7,5 +7,9 @@ router.get(
   "/user-response",
   controller.getUserResponseController
 );
+router.post(
+  "/user-response",
+  controller.saveUserResponseController
+);
 
 module.exports = router;

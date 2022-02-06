@@ -22,3 +22,20 @@ exports.getResponses = async (data) => {
     };
   }
 };
+
+exports.saveResponses = async (data) => {
+  try {
+    const Response = await Responses.create(data);
+    return {
+      error: false,
+      data: Response,
+    };
+  } catch (err) {
+    console.log(err?.response?.data || err);
+    return {
+      error: true,
+      message: "Error getting responses",
+      data: err?.response?.data || err,
+    };
+  }
+};

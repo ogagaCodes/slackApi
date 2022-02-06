@@ -34,3 +34,28 @@ exports.getUserResponseController = async (req, res, next) => {
     return next(createError.InternalServerError(err));
   }
 };
+exports.saveUserResponseController = async (req, res, next) => {
+  try {
+    const { error, message, data } = await service.saveResponses(
+      req.body
+    );
+    if (error) {
+      return next(
+        createError(HTTP.BAD_REQUEST, [
+          {
+            status: RESPONSE.ERROR,
+            message,
+            statusCode: 400,
+            data: data,
+            code: HTTP.BAD_REQUEST,
+          },
+        ])
+      );
+    }
+    return createResponse(message, data)(res, 200);
+  } catch (err) {
+    console.error(err);
+
+    return next(createError.InternalServerError(err));
+  }
+};
